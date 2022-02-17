@@ -27,4 +27,8 @@ const serverRunning = (port) => {
   console.log(`Server running successfully on port ${port}`);
 };
 
+app.get('/', (req, res) => {
+  res.send(projectData);
+});
+
 app.listen(PORT, serverRunning(PORT));
