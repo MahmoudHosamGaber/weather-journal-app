@@ -31,4 +31,10 @@ app.get('/', (req, res) => {
   res.send(projectData);
 });
 
+const addData = (data) => {
+  projectData.push(data);
+};
+
+app.post('/add', addData);
+
 app.listen(PORT, serverRunning(PORT));
