@@ -27,13 +27,26 @@ const serverRunning = (port) => {
   console.log(`Server running successfully on port ${port}`);
 };
 
-app.get('/', (req, res) => {
+app.get('/app', (req, res) => {
   res.send(projectData);
+  console.log(projectData);
 });
 
-const addData = (data) => {
-  projectData.push(data);
+const addData = (req, res) => {
+  const data = req.body;
+  projectData['temperature'] = data.temperature;
+  projectData['date'] = data.date;
+  projectData['userResponse'] = data.userResponse;
+  //   console.log(data);
+  //   res.statusCode = 200;
+  //   res.setHeader('Content-Type', 'text/html');
+  //   res.end('<html><body><body><h1>About Us</h1></body></html>');
 };
+// data = {
+//   temperature: 1,
+//   date: 2,
+//   userResponse: 3,
+// };
 
 app.post('/add', addData);
 
