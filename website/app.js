@@ -1,6 +1,6 @@
 /* Global Variables */
 const URL = 'https://api.openweathermap.org/data/2.5/weather?q=';
-const apiKey = '&APPID=c252888091ee2a2509e0d60013c2883d&units=imperial';
+const apiKey = '&APPID=<secretkey>&units=imperial';
 
 const generateButton = document.querySelector('#generate');
 const zipElement = document.querySelector('#zip');
