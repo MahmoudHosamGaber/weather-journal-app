@@ -39,3 +39,22 @@ const postData = async (url = '', data = {}) => {
     console.log('error', error);
   }
 };
+
+const retrieveData = async () => {
+  const request = await fetch('/all');
+  try {
+    // Transform into JSON
+    const allData = await request.json();
+    console.log(allData);
+    // Write updated data to DOM elements
+    document.getElementById('temp').innerHTML =
+      Math.round(allData.temperature) + ' degrees';
+    document.getElementById('content').innerHTML = allData.userResponse;
+    document.getElementById('date').innerHTML = allData.date;
+  } catch (error) {
+    console.log('error', error);
+    document.getElementById('temp').innerHTML =
+      'An error occured check the country name';
+    // appropriately handle the error
+  }
+};
