@@ -58,3 +58,18 @@ const retrieveData = async () => {
     // appropriately handle the error
   }
 };
+generateButton.addEventListener('click', async () => {
+  let country = zipElement.value;
+  const res = await fetch(URL + country + apiKey);
+  try {
+    const data = await res.json();
+    let temperature = data.main.temp;
+    let userResponse = userFeeling.value;
+    let d = new Date();
+    let date = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
+    postData('/add', { temperature, date, userResponse });
+    retrieveData();
+  } catch (err) {
+    console.log('Error' + err);
+  }
+});
